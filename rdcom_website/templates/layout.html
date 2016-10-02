@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='milligram.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='rdcom.min.css') }}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+<div class="page container">
+    <!-- Header-->
+    <div class="row">
+        <div class="header-wrapper column">
+            <h1>Riccardo D'Angelo dot com</h1>
+        </div>
+    </div>
+    <!-- Nav -->
+    <div class="row">
+        <div class="nav-wrapper column">
+            <nav>
+                <ul>
+                    {% for nav_item in nav_items %}
+                    <li>{{ nav_item }}</li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- Page -->
+    <div class="row">
+        <div class="content-wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+{% block scripts %}{% endblock %}
+</html>
