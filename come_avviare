@@ -1,0 +1,7 @@
+$> . venv/bin/activate
+$> python3.5 run.py
+
+** Task nel package
+
+yarn run <task>
+npm run <task>

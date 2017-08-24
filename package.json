@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy-vendors": "node copy-vendors.js",
     "scss": "node-sass --output-style compressed ./sass/rdcom.scss ./rdcom_website/static/rdcom.min.css",
-    "watch:css": "onchange 'sass/*.scss' -- npm run scss"
+    "watch:css": "onchange 'sass/*.scss' -- yarn run scss"
   },
   "author": "Riccardo D'Angelo <me@riccardodangelo.com>",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "copy": "^0.3.0",
     "node-sass": "^3.10.1",
     "onchange": "^3.0.2"
+  },
+  "dependencies": {
+    "bulma": "^0.5.1"
   }
 }
