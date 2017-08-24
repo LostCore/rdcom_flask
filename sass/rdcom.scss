@@ -7,6 +7,10 @@
 @import "../node_modules/bulma/sass/grid/_all";
 @import "../node_modules/bulma/sass/layout/_all";
 
+/*! Website styles */
+
+@import "typography";
+
 .header-wrapper{
   h1{
     border-bottom: 4px solid black;

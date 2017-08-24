@@ -2,34 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='rdcom.min.css') }}">
     {% block styles %}{% endblock %}
 </head>
 <body>
-<div class="page container">
-    <!-- Header-->
-    <div class="row">
-        <div class="header-wrapper column">
-            <h1>Riccardo D'Angelo dot com</h1>
-        </div>
-    </div>
-    <!-- Nav -->
-    <div class="row">
-        <div class="nav-wrapper column">
-            <nav>
-                <ul>
-                    {% for nav_item in nav_items %}
-                    <li>{{ nav_item }}</li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <!-- Page -->
-    <div class="row">
-        <div class="content-wrapper">
-            {% block content %}{% endblock %}
+<div class="section">
+    <div class="container is-fluid">
+        <div class="columns">
+            <div class="column is-narrow"><img src="http://via.placeholder.com/150x150"></div>
+            <div class="column">
+                <div class="content">
+                    <h1>Hello!</h1>
+                    <p>I'm Riccardo, a developer and a psychologist from Milan.</p>
+                    <p>My passion is to bring great ideas to life through modern, lean and flexible code.</p>
+                    <p>But great ideas needs also great environments to grow, and I love to use my psychology skills to build them.</p>
+                    <p>Making customers and coworkers happy will help you and your product to be and to stay successful :)</p>
+                    <p>You can find more about me on <a href="">linkedin</a> and <a href="">twitter</a>.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
