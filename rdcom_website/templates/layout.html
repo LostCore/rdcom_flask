@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }}</title>
+    <title>{{ site_title }}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='rdcom.min.css') }}">
     {% block styles %}{% endblock %}
@@ -11,56 +11,7 @@
 <body>
 <div class="section">
     <div class="container is-fluid">
-        <div class="columns">
-            <div class="column is-narrow">
-                <figure class="image">
-                    <img src="http://via.placeholder.com/150x150">
-                </figure>
-            </div>
-            <div class="column">
-                <div class="content">
-                    <h1>Hello!</h1>
-                    <p>I'm Riccardo, a developer and a psychologist from Milan.</p>
-                    <p>My passion is to bring great ideas to life through modern, lean and flexible code.</p>
-                    <p>But great ideas needs also great environments to grow, and I love to use my psychology skills to build them.</p>
-                    <p>Making customers and coworkers happy will help you and your product to be and to stay successful :)</p>
-                    <p>You can find more about me on <a href="">linkedin</a> and <a href="">github</a>.</p>
-                </div>
-                <div class="content">
-                    <h2>Currently active projects</h2>
-                    <ul id="active-projects">
-                        <li>
-                            <p>
-                                <span class="project-title">Waboot</span>
-                                A flexible multi-purpose Wordpress theme with a lot of cool ideas.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <span class="project-title">Waboot Framework</span>
-                                A full-fledged, modular framework to make the Wordpress development enjoyable.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <span class="project-title">In-dev react native app</span>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="content">
-                    <h2>Recent articles</h2>
-                    <ul id="recent-articles">
-                        <li>1 - How to...</li>
-                        <li>2 - The...</li>
-                    </ul>
-                    <a href="" class="button is-outlined">
-                        More articles&nbsp;&nbsp;
-                        <span class="icon is-small"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% block content %}{% endblock %}
     </div>
 </div>
 </body>

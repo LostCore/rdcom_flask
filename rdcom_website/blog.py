@@ -25,7 +25,7 @@ def get_articles(sort=True):
     # Order them by date
     if sort:
         articles.sort(key=get_article_sort_key)  # https://stackoverflow.com/questions/11848773/python-equivalent-for-phps-usort
-    return article_files
+    return articles
 
 
 def get_article_sort_key(article_entry):

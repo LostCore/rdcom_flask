@@ -9,8 +9,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    articles = get_articles()
     context = {
-        'nav_items': ['About', 'Projects']
+        'site_title': 'Riccardo D\'Angelo - Fullstack Web Developer',
+        'articles': articles
     }
     return render_template("index.html", **context)
 
@@ -18,6 +20,11 @@ def index():
 @app.route('/blog')
 def blog():
     articles = get_articles()
+    context = {
+        'site_title': 'Riccardo D\'Angelo - Fullstack Web Developer',
+        'page_title': 'Blog',
+        'articles': articles
+    }
     return render_template("index.html")
 
 
