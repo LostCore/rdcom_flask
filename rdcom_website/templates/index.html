@@ -45,7 +45,7 @@
                     <li>{{ loop.index }} - <a href="{{ url_for('article', post_name=article.name) }}">{{ article.title }}</a></li>
                 {% endfor %}
             </ul>
-            <a href="" class="button is-outlined">
+            <a href="{{ url_for('blog') }}" class="button is-outlined">
                 More articles&nbsp;&nbsp;
                 <span class="icon is-small"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
             </a>
