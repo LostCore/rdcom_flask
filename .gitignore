@@ -4,3 +4,4 @@ node_modules
 .idea
 rdcom_website/__pycache__
 rdcom_website/static/rdcom.min.css
+rdcom_website/env.py

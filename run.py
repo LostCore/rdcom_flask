@@ -17,6 +17,6 @@ if cmd_args.debug_mode:
     app_options["use_reloader"] = False
 
 # app.run(**app_options)
-app.run(debug=True, threaded=True)
+app.run(threaded=True)
 
 
