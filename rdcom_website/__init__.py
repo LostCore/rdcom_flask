@@ -8,11 +8,12 @@ app = Flask(__name__)
 app.config.from_object('rdcom_website.settings')  # See: http://flask.pocoo.org/docs/0.12/config/#development-production
 app.config.from_pyfile('env.py')
 
+
 @app.route('/')
 def index():
     articles = get_articles()
     context = {
-        'site_title': 'Riccardo D\'Angelo - Fullstack Web Developer',
+        'site_title': app.config.get('SITE_TITLE'),
         'articles': articles
     }
     return render_template("index.html", **context)
@@ -22,7 +23,7 @@ def index():
 def blog():
     articles = get_articles()
     context = {
-        'site_title': 'Riccardo D\'Angelo - Fullstack Web Developer',
+        'site_title': app.config.get('SITE_TITLE'),
         'page_title': 'Blog',
         'articles': articles
     }
