@@ -5,6 +5,13 @@ from datetime import date
 
 from rdcom_website.settings import ARTICLES_PATH, ARTICLES_METADATA_LINES
 
+'''
+Here some conventions:
+
+article_file: the full absolute path to the article file
+article_entry: the Dict representation of an article
+'''
+
 
 def get_articles(sort=True):
     """
