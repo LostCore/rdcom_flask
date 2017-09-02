@@ -1,7 +1,16 @@
 $> . venv/bin/activate
 $> python3.5 run.py
 
+** Use PIP
+
+$> python3.5 -m pip ...
+
 ** Run package.json tasks
 
 yarn run <task>
 npm run <task>
+
+** Used modules
+
+flask
+markdown2

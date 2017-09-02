@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 
-from rdcom_website.blog import get_articles, get_article_content, get_article_file, get_article
+from rdcom_website.blog import get_articles, get_article_content, get_article_file, get_article, parse_article_content
 
 app = Flask(__name__)
 app.config.from_object('rdcom_website.settings')  # See: http://flask.pocoo.org/docs/0.12/config/#development-production
@@ -34,6 +34,7 @@ def blog():
 def article(post_name):
     article_file = get_article_file(post_name)
     article_content = get_article_content(article_file)
+    article_content = parse_article_content(article_content)
     the_article = get_article(article_file)
     context = {
         'site_title': the_article.get('title')+' - '+app.config.get('SITE_TITLE'),

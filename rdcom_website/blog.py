@@ -1,6 +1,7 @@
 import glob
 import os
 import re
+import markdown2
 from datetime import date
 
 from rdcom_website.settings import ARTICLES_PATH, ARTICLES_METADATA_LINES
@@ -110,3 +111,13 @@ def get_article_metadata(article_file):
         else:
             metadata = {}
     return metadata
+
+
+def parse_article_content(content):
+    """
+    Parse the article content
+    :param string content:
+    :return:
+    """
+    html = markdown2.markdown(content)
+    return html
