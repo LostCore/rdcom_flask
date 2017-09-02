@@ -15,12 +15,7 @@ def get_articles(sort=True):
     article_files = glob.glob(ARTICLES_PATH + '/*.md')
     articles = []
     for file in article_files:
-        article_data = {
-            "name": os.path.basename(file),
-            "path": file
-        }
-        article_metadata = get_article_metadata(file)
-        article_data.update(article_metadata)
+        article_data = get_article(file)
         articles.append(article_data)
     # Order them by date
     if sort:
@@ -41,6 +36,47 @@ def get_article_sort_key(article_entry):
     article_date_list = list(map(int, article_date_string.split("-")))
     article_date = date(year=article_date_list[0], month=article_date_list[1], day=article_date_list[2])
     return article_date
+
+
+def get_article(article_file):
+    """
+    Get an article given the filename
+    :param string article_file:
+    :return:
+    """
+    article_data = {
+        "name": os.path.basename(article_file).rstrip('.md'),  # Stripping out .md
+        "path": article_file
+    }
+    article_metadata = get_article_metadata(article_file)
+    article_data.update(article_metadata)
+    return article_data
+
+
+def get_article_file(article_name):
+    """
+    Get the article file path given the article name
+    :param string article_name:
+    :return:
+    """
+    article_name = article_name+'.md'
+    article_file = ARTICLES_PATH+'/'+article_name
+    return article_file
+
+
+def get_article_content(article_file):
+    """
+    Get the article content, stripping the metadata
+    :param article_file:
+    :return:
+    """
+    content = ""
+    with open(article_file) as article_file:
+        data = article_file.readlines()
+        if len(data) > ARTICLES_METADATA_LINES:
+            del data[:ARTICLES_METADATA_LINES]
+            content = '\\n'.join(data)
+    return content
 
 
 def get_article_metadata(article_file):
