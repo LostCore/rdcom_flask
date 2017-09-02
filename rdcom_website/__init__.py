@@ -22,12 +22,16 @@ def index():
 @app.route('/blog')
 def blog():
     articles = get_articles()
+    for k, article_entry in enumerate(articles):  # https://stackoverflow.com/questions/9152431/iterating-over-list-of-dictionaries
+        article_content = get_article_content(article_entry.get('path'))
+        article_content = parse_article_content(article_content)
+        articles[k].update({'content': article_content})
     context = {
         'site_title': 'Blog - '+app.config.get('SITE_TITLE'),
         'page_title': 'Blog',
         'articles': articles
     }
-    return render_template("index.html", **context)
+    return render_template("blog.html", **context)
 
 
 @app.route('/article/<string:post_name>')

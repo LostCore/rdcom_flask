@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="columns">
+    <div class="column is-narrow">
+        <figure class="image">
+            <img src="http://via.placeholder.com/150x150">
+        </figure>
+    </div>
+    <div class="column">
+        <div class="content">
+            <h1>{{ page_title }}</h1>
+        </div>
+        {% for article in articles %}
+        <div class="content article" data-n="{{ loop.index0 }}">
+            <h2><a href="{{ url_for('article', post_name=article.name) }}">{{ article.title }}</a></h2>
+            {{ article.content | truncate(50) | safe }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
