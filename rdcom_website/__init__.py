@@ -12,7 +12,9 @@ app.config.from_pyfile('env.py')
 
 @app.route('/')
 def index():
+    # Getting data
     articles = get_articles()
+    # Setting data
     context = {
         'site_title': app.config.get('SITE_TITLE'),
         'page_type_class': 'home',
@@ -23,7 +25,11 @@ def index():
 
 @app.route('/blog')
 def blog():
+    # Getting data
     articles = get_articles()
+    '''
+    We need to append the content to each articles
+    '''
     for k, article_entry in enumerate(articles):  # https://stackoverflow.com/questions/9152431/iterating-over-list-of-dictionaries
         article_content = get_article_content(article_entry.get('path'))
         article_content = parse_article_content(article_content)
@@ -32,6 +38,7 @@ def blog():
         ('Home', 'home', helpers.url_for('index'), False),
         ('Blog', 'blog', helpers.url_for('blog'), True)
     ]
+    # Setting data
     context = {
         'site_title': 'Blog - '+app.config.get('SITE_TITLE'),
         'page_type_class': 'blog',
@@ -44,15 +51,17 @@ def blog():
 
 @app.route('/article/<string:post_name>')
 def article(post_name):
+    # Getting data
     article_file = get_article_file(post_name)
     article_content = get_article_content(article_file)
     article_content = parse_article_content(article_content)
     the_article = get_article(article_file)
-    breadcrumb = [
+    breadcrumb = [  # I'm experimenting here, I don't know if a TUPLE is the way to go here.
         ('Home', 'home', helpers.url_for('index'), False),
         ('Blog', 'blog', helpers.url_for('blog'), False),
         (the_article.get('title'), the_article.get('name'), helpers.url_for('article', post_name=the_article.get('name')), True)
     ]
+    # Setting data
     context = {
         'breadcrumb': breadcrumb,
         'site_title': the_article.get('title')+' - '+app.config.get('SITE_TITLE'),
