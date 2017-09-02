@@ -3,11 +3,18 @@
 {% block content %}
 <div class="columns">
     <div class="column is-narrow">
-        <figure class="image">
+        <figure class="image is-150x150">
             <img src="http://via.placeholder.com/150x150">
         </figure>
     </div>
     <div class="column">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+            {% for bc_entry in breadcrumb %}
+                <li {% if(bc_entry[3]) %}class="is-active"{% endif %}><a href="{{ bc_entry[2] }}">{{ bc_entry[0] }}</a></li>
+            {% endfor %}
+            </ul>
+        </nav>
         <div class="content">
             <h1>{{ article.title }}</h1>
         </div>
