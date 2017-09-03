@@ -19,9 +19,11 @@
             <h1>{{ page_title }}</h1>
         </div>
         {% for article in articles %}
-        <div class="content article" data-n="{{ loop.index0 }}">
-            <h2><a href="{{ url_for('article', post_name=article.name) }}">{{ article.title }}</a></h2>
-            {{ article.content | truncate(255) | safe }}
+        <div class="content article-entry" data-n="{{ loop.index0 }}">
+            <h2 class="article-title"><a href="{{ url_for('article', post_name=article.name) }}">{{ article.title }}</a></h2>
+            <div class="article-content">
+                {{ article.content | truncate(255) | safe }}
+            </div>
             <p>
                 <a href="{{ url_for('article', post_name=article.name) }}">Read the rest of the article</a>
             </p>

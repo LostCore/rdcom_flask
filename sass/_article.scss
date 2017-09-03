@@ -1,0 +1,12 @@
+nav.breadcrumb{
+  &.bc-bottom{
+    @media screen and (min-width: $tablet){
+      display: none;
+    }
+  }
+}
+
+nav#article-nav{
+  //...
+}
+

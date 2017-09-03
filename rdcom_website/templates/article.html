@@ -8,7 +8,7 @@
         </figure>
     </div>
     <div class="column">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <nav class="breadcrumb bc-top bc-article" aria-label="breadcrumbs">
             <ul>
             {% for bc_entry in breadcrumb %}
                 <li {% if(bc_entry[3]) %}class="is-active"{% endif %}><a href="{{ bc_entry[2] }}">{{ bc_entry[0] }}</a></li>
@@ -16,11 +16,32 @@
             </ul>
         </nav>
         <div class="content">
-            <h1>{{ article.title }}</h1>
+            <h1 class="article-title">{{ article.title }}</h1>
         </div>
-        <div class="content">
+        <div class="content article-content">
             {{ article_content | safe }}
         </div>
+        <nav class="breadcrumb bc-bottom bc-article" aria-label="breadcrumbs">
+            <ul>
+            {% for bc_entry in breadcrumb %}
+                <li {% if(bc_entry[3]) %}class="is-active"{% endif %}><a href="{{ bc_entry[2] }}">{{ bc_entry[0] }}</a></li>
+            {% endfor %}
+            </ul>
+        </nav>
+        <nav id="article-nav">
+            <ul>
+                <li>
+                    <span class="icon">
+                      <i class="fa fa-long-arrow-left"></i>
+                    </span> Previous article
+                </li>
+                <li>
+                    Next article <span class="icon">
+                      <i class="fa fa-long-arrow-right"></i>
+                    </span>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 {% endblock %}

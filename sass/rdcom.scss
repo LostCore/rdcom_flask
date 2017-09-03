@@ -11,26 +11,22 @@ $dimensions: 16 24 32 48 64 96 128 150;
 /*! Website styles */
 
 @import "typography";
+@import "index";
 @import "blog";
-
-ul#active-projects{
-  li{
-    margin-bottom: 1em;
-    span.project-title{
-      display: block;
-      margin-bottom: 0.3em;
-      @extend .title;
-      @extend .is-6;
-    }
-    p{
-      display: inline-block;
-      vertical-align: middle;
-    }
-  }
-}
+@import "article";
 
 .header-wrapper{
   h1{
     border-bottom: 4px solid black;
+  }
+}
+
+nav.breadcrumb{
+  ul{
+    li{
+      &:first-child a{
+        padding-left: 0;
+      }
+    }
   }
 }
