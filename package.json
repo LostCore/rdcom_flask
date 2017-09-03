@@ -7,11 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy-vendors": "node copy-vendors.js",
     "scss": "node-sass --output-style compressed ./sass/rdcom.scss ./rdcom_website/static/rdcom.min.css",
-    "watch:css": "onchange 'sass/*.scss' -- yarn run scss"
+    "watch:css": "onchange 'sass/*.scss' -- yarn run scss",
+    "sync": "browser-sync start --proxy \"127.0.0.1:5000\" --files \"rdcom_website/static/*.css\" \"rdcom_website/templates/*.html\""
   },
   "author": "Riccardo D'Angelo <me@riccardodangelo.com>",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "copy": "^0.3.0",
     "node-sass": "^3.10.1",
     "onchange": "^3.0.2"
