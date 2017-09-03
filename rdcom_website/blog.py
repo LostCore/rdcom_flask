@@ -120,6 +120,11 @@ def get_article_neighbours(article_entry):
     :param Dict article_entry:
     :return Tuple:
     """
+    # See: http://effbot.org/zone/python-list.htm
+    # See: https://stackoverflow.com/questions/1011938/python-previous-and-next-values-inside-a-loop
+    '''
+    Remember: get_articles(True) returns the article sorted by date, with the [0] as the most recent article
+    '''
     articles = get_articles(True)
     prev_article = None
     next_article = None
