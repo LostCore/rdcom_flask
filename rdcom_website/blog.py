@@ -1,7 +1,7 @@
 import glob
 import os
 import re
-import markdown
+from markdown import Markdown
 import markdown2
 from datetime import date, datetime
 
@@ -159,6 +159,10 @@ def parse_article_content(content):
     :return:
     """
     # https://github.com/trentm/python-markdown2/wiki/Extras
-    html = markdown2.markdown(content, extras=['break-on-newline', 'fenced-code-blocks'])
+    extensions = [
+        'markdown.extensions.fenced_code'
+    ]  # http://pythonhosted.org/Markdown/extensions/
+    md = Markdown(extensions=extensions)
+    html = md.convert(content)
     html = html.replace('\\n', '')
     return html
