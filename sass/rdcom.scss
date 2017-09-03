@@ -4,7 +4,7 @@
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 
 // Custom variables
-$dimensions: 16 24 32 48 64 96 128 150;
+@import "custom-variables";
 
 @import "../node_modules/bulma/bulma";
 
@@ -18,7 +18,7 @@ $dimensions: 16 24 32 48 64 96 128 150;
 .section-thumb{
   height: 150px;
   width: 150px;
-  background: linear-gradient(red, yellow);
+  background: linear-gradient($flatui_darkazure, $flatui_lightazure);
   text-align: center;
   padding-top: 1.8em;
   span{
@@ -27,6 +27,9 @@ $dimensions: 16 24 32 48 64 96 128 150;
     padding-left: 0.3em;
     padding-right: 0.3em;
     line-height: 0.5em;
+  }
+  &:hover{
+    background: linear-gradient($flatui_red, $flatui_lightred);
   }
 }
 
