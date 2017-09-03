@@ -2,7 +2,7 @@ import glob
 import os
 import re
 from markdown import Markdown
-import markdown2
+from flask import Markup
 from datetime import date, datetime
 
 from rdcom_website.settings import ARTICLES_PATH, ARTICLES_METADATA_LINES
@@ -160,9 +160,11 @@ def parse_article_content(content):
     """
     # https://github.com/trentm/python-markdown2/wiki/Extras
     extensions = [
-        'markdown.extensions.fenced_code'
+        'markdown.extensions.extra',
+        'markdown.extensions.smarty'
     ]  # http://pythonhosted.org/Markdown/extensions/
     md = Markdown(extensions=extensions)
     html = md.convert(content)
+    html = Markup(html)
     html = html.replace('\\n', '')
     return html

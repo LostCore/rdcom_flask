@@ -8,7 +8,7 @@
     "copy-vendors": "node copy-vendors.js",
     "scss": "node-sass --output-style compressed ./sass/rdcom.scss ./rdcom_website/static/rdcom.min.css",
     "watch:css": "onchange 'sass/*.scss' -- yarn run scss",
-    "sync": "browser-sync start --proxy \"127.0.0.1:5000\" --files \"rdcom_website/static/*.css\" \"rdcom_website/templates/*.html\""
+    "sync": "browser-sync start --proxy \"127.0.0.1:5000\" --files \"rdcom_website/static/*.css\" \"rdcom_website/templates/*.html\" \"rdcom_website/contents/*.md\""
   },
   "author": "Riccardo D'Angelo <me@riccardodangelo.com>",
   "license": "ISC",
