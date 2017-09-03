@@ -15,6 +15,21 @@ $dimensions: 16 24 32 48 64 96 128 150;
 @import "blog";
 @import "article";
 
+.section-thumb{
+  height: 150px;
+  width: 150px;
+  background: linear-gradient(red, yellow);
+  text-align: center;
+  padding-top: 1.8em;
+  span{
+    color: $white;
+    font-size: 3em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    line-height: 0.5em;
+  }
+}
+
 .header-wrapper{
   h1{
     border-bottom: 4px solid black;
