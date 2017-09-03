@@ -2,6 +2,7 @@ import glob
 import os
 import re
 import markdown2
+import itertools
 from datetime import date
 
 from rdcom_website.settings import ARTICLES_PATH, ARTICLES_METADATA_LINES
@@ -111,6 +112,27 @@ def get_article_metadata(article_file):
         else:
             metadata = {}
     return metadata
+
+
+def get_article_neighbours(article_entry):
+    """
+    Get the next and the prev article of the specified article entry
+    :param Dict article_entry:
+    :return Tuple:
+    """
+    articles = get_articles(True)
+    prev_article = None
+    next_article = None
+    articles_num = len(articles)
+    article_index = articles.index(article_entry)
+    if article_index == 0 and articles_num > 0:
+        prev_article = articles[1]
+    elif article_index > 0 and article_index+1 != articles_num:
+        next_article = articles[article_index-1]
+        prev_article = articles[article_index+1]
+    elif article_index > 0 and article_index+1 == articles_num:
+        next_article = articles[article_index-1]
+    return prev_article, next_article
 
 
 def parse_article_content(content):

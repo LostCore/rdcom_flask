@@ -30,16 +30,20 @@
         </nav>
         <nav id="article-nav">
             <ul>
+                {% if prev_article %}
                 <li>
                     <span class="icon">
                       <i class="fa fa-long-arrow-left"></i>
-                    </span> Previous article
+                    </span> <a href="{{ url_for('article',post_name=prev_article.name) }}">Previous article</a>
                 </li>
+                {% endif %}
+                {% if next_article %}
                 <li>
-                    Next article <span class="icon">
+                    <a href="{{ url_for('article',post_name=next_article.name) }}">Next article</a> <span class="icon">
                       <i class="fa fa-long-arrow-right"></i>
                     </span>
                 </li>
+                {% endif %}
             </ul>
         </nav>
     </div>
