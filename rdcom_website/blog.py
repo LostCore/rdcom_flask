@@ -1,8 +1,8 @@
 import glob
 import os
 import re
+import markdown
 import markdown2
-import itertools
 from datetime import date, datetime
 
 from rdcom_website.settings import ARTICLES_PATH, ARTICLES_METADATA_LINES
@@ -109,7 +109,7 @@ def get_article_metadata(article_file):
         if len(data) > ARTICLES_METADATA_LINES:
             metadata = {}
             metadata_list = data[:ARTICLES_METADATA_LINES]
-            search_pattern = re.compile("^#@([a-z]+): ?([a-zA-Z0-9-_ !?]+)$")
+            search_pattern = re.compile("^#@([a-z]+): ?([a-zA-Z0-9-_ !?()]+)$")
             for line in metadata_list:
                 r = search_pattern.findall(line)
                 # Here we got a LIST of TUPLES with all the string matching the pattern,
@@ -158,5 +158,7 @@ def parse_article_content(content):
     :param string content:
     :return:
     """
-    html = markdown2.markdown(content)
+    # https://github.com/trentm/python-markdown2/wiki/Extras
+    html = markdown2.markdown(content, extras=['break-on-newline', 'fenced-code-blocks'])
+    html = html.replace('\\n', '')
     return html
