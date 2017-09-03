@@ -3,7 +3,7 @@ import os
 import re
 import markdown2
 import itertools
-from datetime import date
+from datetime import date, datetime
 
 from rdcom_website.settings import ARTICLES_PATH, ARTICLES_METADATA_LINES
 
@@ -28,19 +28,26 @@ def get_articles(sort=True):
         articles.append(article_data)
     # Order them by date
     if sort:
-        articles.sort(key=get_article_sort_key)  # https://stackoverflow.com/questions/11848773/python-equivalent-for-phps-usort
+        # https://stackoverflow.com/questions/11848773/python-equivalent-for-phps-usort
+        # https://stackoverflow.com/questions/2589479/how-do-i-sort-this-list-in-python-if-my-date-is-in-a-string
+        articles.sort(key=lambda x: x['real_date'])
+        # https://stackoverflow.com/questions/3940128/how-can-i-reverse-a-list-in-python
+        articles.reverse()
     return articles
 
 
 def get_article_sort_key(article_entry):
     """
-    Retrieve the sort key to be used in articles sorting
+    Retrieve the sort key to be used in articles sorting.
+    This is not used ATM, instead a lamba function with real_date is used.
     :param article_entry: Dict
     :return: date
     """
     # http://www.php2python.com/wiki/function.array-map/
     # http://book.pythontips.com/en/latest/map_filter.html
     # https://docs.python.org/3.5/library/datetime.html
+    # https://stackoverflow.com/questions/2589479/how-do-i-sort-this-list-in-python-if-my-date-is-in-a-string
+    # datetime.strptime()
     article_date_string = article_entry['date']
     article_date_list = list(map(int, article_date_string.split("-")))
     article_date = date(year=article_date_list[0], month=article_date_list[1], day=article_date_list[2])
@@ -109,6 +116,11 @@ def get_article_metadata(article_file):
                 # so in [0][0] we got the metadata name and in [0][1] we got the metadata value
                 if len(r) == 1:
                     metadata[r[0][0]] = r[0][1]  # Is there a better way?
+            # Convert date
+            if 'date' in metadata:
+                date_as_list = list(map(int, metadata['date'].split("-")))
+                the_date = date(year=date_as_list[0], month=date_as_list[1], day=date_as_list[2])
+                metadata['real_date'] = the_date
         else:
             metadata = {}
     return metadata
