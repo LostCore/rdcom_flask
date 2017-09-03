@@ -1,0 +1,26 @@
+// Sans
+
+//@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
+
+//@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,700');
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,700');
+
+// Serif
+
+//@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i');
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya:400,400i,700');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family: $family-sans-serif;
+}
+
+a{
+  font-family: $family-sans-serif;
+}

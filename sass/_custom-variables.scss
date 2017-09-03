@@ -7,6 +7,11 @@ $dimensions: 16 24 32 48 64 96 128 150;
 ////////////////////////////////////////////////
 // 1. Initial variables
 
+$body-size: 16px;
+$family-serif: 'Alegreya', serif;
+$family-sans-serif: 'Work Sans', serif;
+$body-family: $family-serif;
+
 // Colors: FlatUI
 $flatui_blue: #2C3E50;
 $flatui_red: #E74C3C;

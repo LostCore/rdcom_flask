@@ -16,6 +16,7 @@
 @import "article";
 
 .section-thumb{
+  font-family: $family-sans-serif;
   height: 150px;
   width: 150px;
   background: linear-gradient($flatui_darkazure, $flatui_lightazure);
